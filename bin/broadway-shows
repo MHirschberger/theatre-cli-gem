@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require './lib/theatre_cli_gem'
+TheatreCliGem::CLI.new.call
