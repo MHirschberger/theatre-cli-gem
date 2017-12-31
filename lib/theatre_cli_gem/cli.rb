@@ -8,26 +8,24 @@ class TheatreCliGem::CLI
 
   def list_shows
     puts "Broadway Shows Currently Playing:"
-    puts <<-DOC
-      1. The Phantom of the Opera
-      2. Dear Evan Hansen
-    DOC
+    @shows = TheatreCliGem::Show.current
+    @shows.each.with_index(1) do |show, i|
+      puts "#{i}. #{show.name}"
+    end
   end
 
   def menu
     input = nil
     while input != "exit"
-      puts "Enter the number of the show you're interested in learning more about or 'list' for the list of current shows:"
+      puts "\nEnter the number of the show you're interested in or type 'list' for the list of current shows or type 'exit' to leave:"
       input = gets.strip.downcase
-      case input
-        when "1"
-          puts "More info on deal 1..."
-        when "2"
-          puts "More info on deal 2..."
-        when "list"
-          list_shows
-        else
-          puts "Type 'exit' to leave or 'list' to list Broadway shows currently playing:"
+      if input.to_i > 0
+        selected_show = @shows[input.to_i-1]
+        puts "\nShow Name:\n#{selected_show.name}\n\nTheater:\n#{selected_show.theater}\n\nOpening Date:\n#{selected_show.opening_date}\n\nSummary:\n#{selected_show.summary}"
+      elsif input == "list"
+        list_shows
+      else
+        puts "Type 'list' to list Broadway shows currently playing or type 'exit' to leave:"
       end
     end
   end
