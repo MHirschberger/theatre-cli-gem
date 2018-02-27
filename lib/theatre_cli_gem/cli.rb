@@ -18,13 +18,13 @@ class TheatreCliGem::CLI
     while input != "exit"
       puts "\nEnter the number of the show you're interested in or type 'list' for the list of current shows or type 'exit' to leave:"
       input = gets.strip.downcase
-      if input.to_i > 0
-        selected_show = @shows[input.to_i-1]
-        puts "\nShow Name:\n#{selected_show.name}\n\nTheater:\n#{selected_show.theater}\n\nOpening Date:\n#{selected_show.opening_date}\n\nSummary:\n#{selected_show.summary}"
+      if input.to_i > 0 && input.to_i < TheatreCliGem::Show.all.length+1
+        selected_show = TheatreCliGem::Show.find(input.to_i)
+        puts "\nShow Name:\n#{selected_show.name}\n\nTheater:\n#{selected_show.theater}\n\nSummary:\n#{selected_show.summary}"
       elsif input == "list"
         list_shows
       else
-        puts "Type 'list' to list Broadway shows currently playing or type 'exit' to leave:"
+        puts "Invalid entry.\nType 'list' to list Broadway shows currently playing or type 'exit' to leave:"
       end
     end
   end
