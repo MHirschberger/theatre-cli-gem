@@ -4,4 +4,3 @@ source "https://rubygems.org"
 
 # Specify your gem's dependencies in theatre_cli_gem.gemspec
 gemspec
-gem 'theatre_cli_gem', :git => "git://github.com/MHirschberger/theatre-cli-gem.git"
