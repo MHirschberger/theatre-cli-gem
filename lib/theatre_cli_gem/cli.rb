@@ -8,7 +8,7 @@ class TheatreCliGem::CLI
 
   def list_shows
     puts "Broadway Shows Currently Playing:"
-    TheatreCliGem::Show.current.each.with_index(1) do |show, i|
+    TheatreCliGem::Show.scrape_shows.each.with_index(1) do |show, i|
       puts "#{i}. #{show.name}"
     end
   end
