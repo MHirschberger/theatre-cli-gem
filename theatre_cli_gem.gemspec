@@ -8,31 +8,20 @@ Gem::Specification.new do |spec|
   spec.version       = TheatreCliGem::VERSION
   spec.authors       = ["'Michael Hirschberger'"]
   spec.email         = ["'mlhirschberger@gmail.com'"]
-
   spec.summary       = %q{Current Broadway musicals.}
-  spec.description   = %q{Provides information about current Broadway musicals obtained from broadway.com.}
+  spec.description   = %q{Provides information about current Broadway musicals obtained from broadway.org.}
   spec.homepage      = "https://github.com/MHirschberger/theatre-cli-gem.git"
   spec.license       = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
-
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
   end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.executables   = ["broadway-shows"]
+  spec.require_paths = ["lib", "lib/theatre_cli_gem"]
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "pry"
   spec.add_dependency "nokogiri"
+
 end
